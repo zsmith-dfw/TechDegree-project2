@@ -1,85 +1,36 @@
-
-
-
-/*** 
-   Add your global variables that store the DOM elements you will 
-   need to reference and/or manipulate. 
-   
-   But be mindful of which variables should be global and which 
-   should be locally scoped to one of the two main functions you're 
-   going to create. A good general rule of thumb is if the variable 
-   will only be used inside of a function, then it can be locally 
-   scoped to that function.
-***/
 const student = document.querySelectorAll('.student-list li'); // this will store the student list item elements in student list
-const itemsPerPage = 10; // this will store the number of items on a page
+const itemsPerPage = 10; // we only want 10 students per page 
 
-
-
-/*** 
-   Create the `showPage` function to hide all of the items in the 
-   list except for the ten you want to show.
-
-   Pro Tips: 
-     - Keep in mind that with a list of 54 students, the last page 
-       will only display four.
-     - Remember that the first student has an index of 0.
-     - Remember that a function `parameter` goes in the parens when 
-       you initially define the function, and it acts as a variable 
-       or a placeholder to represent the actual function `argument` 
-       that will be passed into the parens later when you call or 
-       "invoke" the function 
-***/
 // hides all items except ones we want to show 
-const showPage = (list, page) => { 
-   const startIndex = (page * itemsPerPage) - itemsPerPage;
-   const endIndex = (page * itemsPerPage);
-   for (let i = 0; i < list.length; i ++) {
-     if (i >= startIndex && i <= endIndex) {
-      list[i].style.display = 'block';
-    } else { list[i].style.display = 'none';
+  const showPage = (list, page) => { 
+    const startIndex = (page * itemsPerPage) - itemsPerPage; // honestly not 100% sure on the math on this - it was given from the project study guide 
+    const endIndex = (page * itemsPerPage);
+    for (let i = 0; i < list.length; i ++) { // looping through so that we only show 10 items on a page and hide the rest 
+      if (i >= startIndex && i <= endIndex) {
+        list[i].style.display = 'block'; 
+      } else { list[i].style.display = 'none';
+    }     
   }
-       
-     }
-   }
+ }
+   showPage(student, 4) // just used for testing if showPage function works 
 
-   showPage(student, 1)
-
-   const appendPageLinks = (list) => {
-     let listDiv = document.createElement('div');
-     listDiv.className = "pagination";
-     listDiv.appendChild('.page');
-     let ul = document.createElement('ul');
-     pagination.appendChild('ul');
-
-    
-
-    
-// the elements below need to be created 
-
-  //   <div class="pagination">
-  //    <ul>
-  //      <li>
-  //        <a class="active" href="#">1</a>
-  //      </li>
-  //       <li>
-  //        <a href="#">2</a>
-  //      </li>
-  //       <li>
-  //        <a href="#">3</a>
-  //      </li>
-  //       <li>
-  //        <a href="#">4</a>
-  //      </li>
-  //       <li>
-  //        <a href="#">5</a>
-  //      </li>
-  //    </ul>
-  //  </div>
+   let appendPageLinks = (list) => {
+    let pageNumbers = list.length / itemsPerPage // not sure if this is correct. intent is to dynamically create the amount of pages based of total list and how many ought to be on a page 
+    let listDiv = document.createElement('div'); // here we create and append the DOM elements that will create h ref links for the user to click on 
+    listDiv.className = "pagination";
+    listDiv.appendChild('.page');
+    let ul = document.createElement('ul');
+    pagination.appendChild('ul');
+      for (let i = 0; i < pageNumbers; i ++) { // loop through to dynamically create links 
+      let a = document.createElement('a')
+      let li = document.createElement('li')
+      ul.appendChild('li');
+      li.appendChild('a');
+      a.className = "active";
+      a.href="#"; 
+      a.textContent = pageNumbers; // trying to set the links at the bottom to read out as the page numbers 
+    }
+}
 
 
-   }
-     
-  //  }
 
-   
