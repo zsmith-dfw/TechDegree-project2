@@ -43,8 +43,42 @@ const showPage = (list, page) => {
      }
    }
 
-   showPage(list, 1)
-  //  const appendPageLinks = (list) => {
+   showPage(student, 1)
+
+   const appendPageLinks = (list) => {
+     let listDiv = document.createElement('div');
+     listDiv.className = "pagination";
+     listDiv.appendChild('.page');
+     let ul = document.createElement('ul');
+     pagination.appendChild('ul');
+
+    
+
+    
+// the elements below need to be created 
+
+  //   <div class="pagination">
+  //    <ul>
+  //      <li>
+  //        <a class="active" href="#">1</a>
+  //      </li>
+  //       <li>
+  //        <a href="#">2</a>
+  //      </li>
+  //       <li>
+  //        <a href="#">3</a>
+  //      </li>
+  //       <li>
+  //        <a href="#">4</a>
+  //      </li>
+  //       <li>
+  //        <a href="#">5</a>
+  //      </li>
+  //    </ul>
+  //  </div>
+
+
+   }
      
   //  }
 
