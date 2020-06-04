@@ -22,24 +22,24 @@ const itemsPerPage = 9; // we only want 10 students per page
     const page = document.querySelector('.page'); // select the div with class name of page
     page.appendChild(listDiv); // append the container div to div with class name of page
     let maxPages = math.ceil(list.length / itemsPerPage); // find out how many pages are needed
-      for (let i = 0; i < 9; i ++) { // loop through to dynamically create a new page for every 10 students
+      for (let i = 0; i < maxPages; i ++) { // loop through to dynamically create a new page for every 10 students
       const ul = document.querySelector('ul'); // trying to create a nested UL containing one LI for every 10 studentds
       const li = document.querySelector('li'); // selecting the list items
       ul.appendChild(li); // appending the list items to the unordered list 
       const a = document.querySelector('a'); // selecting the a element
       li.appendChild(a); // appending a to li element 
       a.href="#"; // giving href attribute to the a element 
-      i.textContent = // I am unsure what to set this variable as - would it be one of my globals or a local one I need to make?
+     i.textContent = maxPages // I am unsure what to set this variable as - would it be one of my globals or a local one I need to make?
       
 
-      a.textContent = list; // trying to set the links at the bottom to read out as the page numbers 
+      // a.textContent = list; // trying to set the links at the bottom to read out as the page numbers 
      
-      for (let i = 0; i < itemsPerPage.length; i ++) { // setting a loop to apply the listener to each link
-        itemsPerPage[i].addEventListener('click',  () => {
-        )}};
-      // I have no idea where to begin on the last two items 
-      // The active class name should be removed from all pagination links. A loop can be helpful for this step
-      // The active class name should be added to the link that was clicked
+      // for (let i = 0; i < itemsPerPage.length; i ++) { // setting a loop to apply the listener to each link
+      //   itemsPerPage[i].addEventListener('click',  () => {
+      //   )}};
+      // // I have no idea where to begin on the last two items 
+      // // The active class name should be removed from all pagination links. A loop can be helpful for this step
+      // // The active class name should be added to the link that was clicked
     }
     }
 // I do not understand how to properly call the function, first argument is set as global variable and second should be "page number" but i don't know what that is 
