@@ -3,6 +3,15 @@ const student = document.querySelectorAll('.student-list li');
 // We only want 10 students per page.
 const itemsPerPage = 10; 
 
+const searchStudents = () => {
+  const searchDiv = document.createElement('div');
+  searchDiv.className = 'student-search';
+  const header = document.querySelector('.page-header cf');
+  header.appendChild(searchDiv);
+  const searchbar = document.createElement('input');
+  searchDiv.appendChild(searchbar);
+}
+
 // This function shows the students we want to display on the page and hides the rest.
 const showPage = (list, page) => { 
   const startIndex = (page * itemsPerPage) - itemsPerPage;
@@ -15,6 +24,9 @@ const showPage = (list, page) => {
       list[i].style.display = 'none';
     }     
   }
+
+
+  
 }
 
 // This function creates the links to the different pages at the bottom and allows them to be clickable and show the contents of the other pages by calling the showPage function.
@@ -65,6 +77,10 @@ const appendPageLinks = (list) => {
 showPage(student, 1)
 // Now we bring up our links and pass the list of students through it. Otherwise, it won't generate links because it only knows to hide all but the first 10 students.
 appendPageLinks (student);
+
+searchStudents();
+
+
 
 
 
