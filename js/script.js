@@ -3,15 +3,6 @@ const student = document.querySelectorAll('.student-list li');
 // We only want 10 students per page.
 const itemsPerPage = 10; 
 
-const searchStudents = () => {
-  const searchDiv = document.createElement('div');
-  searchDiv.className = 'student-search';
-  const header = document.querySelector('.page-header cf');
-  header.appendChild(searchDiv);
-  const searchbar = document.createElement('input');
-  searchDiv.appendChild(searchbar);
-}
-
 // This function shows the students we want to display on the page and hides the rest.
 const showPage = (list, page) => { 
   const startIndex = (page * itemsPerPage) - itemsPerPage;
@@ -24,11 +15,7 @@ const showPage = (list, page) => {
       list[i].style.display = 'none';
     }     
   }
-
-
-  
 }
-
 // This function creates the links to the different pages at the bottom and allows them to be clickable and show the contents of the other pages by calling the showPage function.
 const appendPageLinks = (list) => {
   // Create the condainer div element and give it a class name of pagination. 
@@ -73,14 +60,44 @@ const appendPageLinks = (list) => {
     })
   }
 };
+const searchDiv = document.createElement('div');
+searchDiv.className = 'student-search';
+const header = document.querySelector('.page-header');
+header.appendChild(searchDiv);
+const searchbar = document.createElement('input');
+searchbar.placeholder = "Type name here.."
+searchDiv.appendChild(searchbar);
+const button = document.createElement('button');
+button.innerHTML = 'Search'
+searchDiv.appendChild(button);
+
+const performSearch = (searchInput, names) => {
+  for (let i = 0; i < names.length; i ++) {
+   if (searchInput.value.length !== 0 && names[i].textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
+        names[i].style.display = 'block'
+      } else {
+        names[i].style.display = 'none'
+  }
+  
+  }
+};
 // Shows the page. It makes sense to begin on page one.
 showPage(student, 1)
 // Now we bring up our links and pass the list of students through it. Otherwise, it won't generate links because it only knows to hide all but the first 10 students.
 appendPageLinks (student);
 
-searchStudents();
+searchbar.addEventListener('keyup', () => {
 
+  performSearch(searchbar, student)
 
+});
+
+button.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  performSearch(searchbar, student)
+ 
+});
 
 
 
