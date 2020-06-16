@@ -78,8 +78,9 @@ const performSearch = (searchInput, names) => {
       } else {
         names[i].style.display = 'none'
   }
-  
+
   }
+
 };
 // Shows the page. It makes sense to begin on page one.
 showPage(student, 1)
