@@ -78,7 +78,8 @@ const performSearch = (searchInput, names) => {
       } else {
         names[i].style.display = 'none'
   }
-
+  let newArray = [names[i]]
+  console.log(newArray)
   }
 
 };
